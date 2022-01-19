@@ -1,0 +1,24 @@
+
+1、event_base_new 创建事件框架，内置消息循环
+2、event_base_free 释放资源
+3、event_new  创建事件，没有缓冲区
+4、event_add 添加事件到框架，可指定超时
+5、event_free 释放事件资源
+6、event_base_dispatch 启动事件循环   event_base_loop 精细控制
+7、event_base_loopexit 退出循环（柔和模式）event_base_loopbreak(强制模式)
+event_get_supported_method
+event_base_get_method  当前base的
+
+在子进程中重新初始化 event_reinit
+
+Bufferevent 带缓冲区的事件
+bufferevent_read()  缓冲区内部存储结构-队列，读回调里可以用这个读取缓冲区数据
+bufferevent_write()  写回调没啥用，bufferevent内的写缓冲区数据会自动发送
+
+1、bufferevent_socket_new 创建带缓冲区事件
+2、bufferevent_setcb 为读写缓冲区设置回调
+3、bufferevent_socket_connect 客户端启动连接服务器
+4、bufferevent_enable/disable   禁用后，对应的回调不会被触发（读、写回调）
+5、evconnlistener_new_bind  server端链接监听器
+6、evconnlistener_free 释放资源
+7、evconnlistener_set_cb重新制定回调
